@@ -35,4 +35,8 @@ public class User {
     // 用户是否注销了账号
     @Column(name = "is_log_off")
     private int isLogOff;
+
+    // 用户注册时间
+    @Column(name = "create_time")
+    private long createTime;
 }

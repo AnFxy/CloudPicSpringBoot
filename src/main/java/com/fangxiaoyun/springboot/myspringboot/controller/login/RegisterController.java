@@ -5,14 +5,12 @@ import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.RegisterMessage;
 import com.fangxiaoyun.springboot.myspringboot.service.UserService;
 import com.fangxiaoyun.springboot.myspringboot.table.User;
-import com.fangxiaoyun.springboot.myspringboot.utils.CheckRequestBodyUtil;
-import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
-import com.fangxiaoyun.springboot.myspringboot.utils.SuccessResponseUtil;
-import com.fangxiaoyun.springboot.myspringboot.utils.UidUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.*;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,7 +21,7 @@ public class RegisterController {
     @Autowired
     UserService service;
 
-    @RequestMapping("/register")
+    @RequestMapping(value = "/register", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String doRegister(@RequestBody String body) {
         // 核验用户上传参数数据是否正确
@@ -37,6 +35,7 @@ public class RegisterController {
                 return ErrorResponseUtil.instance().initResponse(Constants.PHONE_NUMBER_USED);
             } else {
                 // 没有注册过，那么生成UID，并将用户信息插入数据库的 user_message表中
+                // 注意，用户表可以将用户注销，但是不要移除用户，否则ID会出现相同
                 long count = service.countUser();
                 User user = new User(
                         UidUtil.instance().provide(count),
@@ -44,7 +43,8 @@ public class RegisterController {
                         baseRequest.getData().getPhoneNumber(),
                         baseRequest.getData().getPassword(),
                         0,
-                        0
+                        0,
+                        TimeUtil.instance().getCurrentTime()
                 );
                 User useResult = service.addUser(user);
                 if (useResult != null) {

@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUid(Long uid);
     List<User> findByPhoneNumber(String phoneNumber);
+    List<User> findByPhoneNumberAndPassword(String phoneNumber, String password);
     long count();
 
     User save(User user);

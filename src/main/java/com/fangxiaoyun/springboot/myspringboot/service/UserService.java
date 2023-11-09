@@ -20,6 +20,10 @@ public class UserService {
         return userRepository.findByPhoneNumber(phoneNumber);
     }
 
+    public List<User> getUserByPhoneNumberAndPassword(String phoneNumber, String password) {
+        return userRepository.findByPhoneNumberAndPassword(phoneNumber, password);
+    }
+
     public long countUser() {
         return userRepository.count();
     }

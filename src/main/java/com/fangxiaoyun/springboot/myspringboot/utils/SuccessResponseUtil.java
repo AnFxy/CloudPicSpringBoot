@@ -21,6 +21,10 @@ public class SuccessResponseUtil {
     }
 
     public String simpleResponse() {
-        return new Gson().toJson(new BaseResponse<>(200, Constants.OPERATE_SUCCESS, null));
+        return dataResponse(null);
+    }
+
+    public <T> String dataResponse(T data) {
+        return new Gson().toJson(new BaseResponse<>(200, Constants.OPERATE_SUCCESS, data));
     }
 }

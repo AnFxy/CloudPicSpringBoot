@@ -22,7 +22,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     // mysql数据库操作
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'mysql:mysql-connector-java:8.0.27'
+    implementation 'mysql:mysql-connector-java:8.0.28'
     // Lombok 插件 减少模版代码编写
     compileOnly "org.projectlombok:lombok:1.18.20"
     annotationProcessor "org.projectlombok:lombok:1.18.20"
