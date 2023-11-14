@@ -23,4 +23,8 @@ public class ErrorResponseUtil {
     public String initResponse(String errorText) {
         return new Gson().toJson(new BaseResponse<>(400, errorText == null ? Constants.OPERATE_FAILED : errorText, null));
     }
+
+    public String tokenInvalidResponse() {
+        return new Gson().toJson(new BaseResponse<>(101, Constants.TOKEN_INVALID, null));
+    }
 }

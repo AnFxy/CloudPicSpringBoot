@@ -14,6 +14,7 @@ import java.util.List;
 @Transactional
 public interface LoginRepository extends JpaRepository<Login, Long> {
     List<Login> findByPhoneNumber(String phoneNumber);
+    List<Login> findByToken(String token);
     List<Login> findByPhoneNumberAndToken(String phoneNumber, String token);
     void deleteByPhoneNumber(String phoneNumber);
 

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Image {
     // 图片ID，唯一的
     @Id
-    private Long uid;
+    private long uid;
 
     // 图片名字
     @Column(name="name")
@@ -22,5 +22,5 @@ public class Image {
 
     // 创建时间
     @Column(name="create_time")
-    private Long createTime;
+    private long createTime;
 }

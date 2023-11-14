@@ -16,8 +16,14 @@ public class ImageService {
         return imageRepository.findByUid(uid);
     }
 
+    public List<Image> getImagesByName(String name) { return imageRepository.findByName(name); }
+
     public List<Image> getImagesByUids(List<Long> uids) {
         return imageRepository.findByUidIn(uids);
+    }
+
+    public long count() {
+        return imageRepository.count();
     }
 
     public Image addImage(Image image) {

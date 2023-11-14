@@ -16,6 +16,10 @@ public class LoginService {
         return loginRepository.findByPhoneNumber(phoneNumber);
     }
 
+    public List<Login> getLoginByToken(String token) {
+        return loginRepository.findByToken(token);
+    }
+
     public List<Login> getLoginByPhoneNumberAndToken(String phoneNumber, String token) {
         return loginRepository.findByPhoneNumberAndToken(phoneNumber, token);
     }

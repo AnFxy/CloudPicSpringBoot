@@ -50,7 +50,6 @@ public class LoginController {
                         );
                     } else {
                         // 登录表中没有这个记录，那么需要新增
-                        long count = loginService.countLogin();
                         loginService.addLogin(new Login(
                                 baseRequest.getData().getPhoneNumber(),
                                 token,

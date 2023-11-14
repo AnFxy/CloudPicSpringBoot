@@ -7,7 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageResource {
-    private String imageUrl;
+public class AlbumResource {
+    private String faceUrl;
+    private String title;
+    private int labelId;
+    private int total;
     private long createTime;
+    private String id;
 }

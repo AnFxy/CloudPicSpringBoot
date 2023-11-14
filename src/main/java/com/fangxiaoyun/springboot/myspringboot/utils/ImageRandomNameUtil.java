@@ -22,7 +22,7 @@ public class ImageRandomNameUtil {
         return imageNameUtil;
     }
 
-    public String generateUniqueCode(String type) {
+    public String generateUniqueCode(int length) {
         StringBuilder sb = new StringBuilder(CODE_LENGTH);
         SecureRandom random = new SecureRandom();
         for (int i = 0; i < CODE_LENGTH; i++) {
@@ -34,5 +34,9 @@ public class ImageRandomNameUtil {
             }
         }
         return sb.toString();
+    }
+
+    public String generateUniqueCode() {
+        return generateUniqueCode(CODE_LENGTH);
     }
 }

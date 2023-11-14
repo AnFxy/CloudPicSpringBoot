@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class User {
     // 用户ID，唯一的
     @Id
-    private Long uid;
+    private long uid;
 
     // 用户名字
     @Column(name="name")
