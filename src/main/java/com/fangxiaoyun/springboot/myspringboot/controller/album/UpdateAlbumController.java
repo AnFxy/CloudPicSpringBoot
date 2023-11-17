@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -37,11 +38,11 @@ public class UpdateAlbumController {
 
     @RequestMapping(value = "/update_album_detail", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String createAlbum(@RequestBody String body, @RequestHeader BaseHead baseHead) {
+    public String createAlbum(@RequestBody String body, @RequestHeader HashMap<String, String> baseHead) {
         // 检测token是否存在
-        if (baseHead != null && baseHead.getToken() != null && !baseHead.getToken().equals("")) {
+        if (baseHead != null && baseHead.get("token") != null && !baseHead.get("token").equals("")) {
             // 校验 token
-            List<Login> loginInfo = loginService.getLoginByToken(baseHead.getToken());
+            List<Login> loginInfo = loginService.getLoginByToken(baseHead.get("token"));
             if (loginInfo != null && loginInfo.size() > 0) {
                 // 校验 token的有效性
                 long currentTime = System.currentTimeMillis();

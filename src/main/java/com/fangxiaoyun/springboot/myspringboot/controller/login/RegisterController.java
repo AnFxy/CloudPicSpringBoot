@@ -42,6 +42,9 @@ public class RegisterController {
                         baseRequest.getData().getName(),
                         baseRequest.getData().getPhoneNumber(),
                         baseRequest.getData().getPassword(),
+                        "",
+                        "",
+                        1,
                         0,
                         0,
                         TimeUtil.instance().getCurrentTime()

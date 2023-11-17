@@ -28,6 +28,18 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    // 用户头像
+    @Column(name = "head")
+    private String headUrl;
+
+    // 用户简介
+    @Column(name = "des")
+    private String des;
+
+    // 用户性别
+    @Column(name = "gender")
+    private int gender;
+
     // 用户是否是黑名单
     @Column(name = "is_black")
     private int isBlack;
