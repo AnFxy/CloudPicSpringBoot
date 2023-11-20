@@ -24,6 +24,10 @@ public class UserService {
         return userRepository.findByPhoneNumberAndPassword(phoneNumber, password);
     }
 
+    public void updateUser(String phoneNumber, long headId, String nickName, int gender, String des) {
+        userRepository.updateUserInfo(phoneNumber, headId, nickName, gender, des);
+    }
+
     public long countUser() {
         return userRepository.count();
     }

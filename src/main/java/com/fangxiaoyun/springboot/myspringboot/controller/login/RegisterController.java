@@ -42,7 +42,7 @@ public class RegisterController {
                         baseRequest.getData().getName(),
                         baseRequest.getData().getPhoneNumber(),
                         baseRequest.getData().getPassword(),
-                        "",
+                        -1,
                         "",
                         1,
                         0,

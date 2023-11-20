@@ -13,5 +13,5 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
     List<Image> findByUidIn(List<Long> uids);
     long count();
 
-    Image save(Image user);
+    Image save(Image image);
 }

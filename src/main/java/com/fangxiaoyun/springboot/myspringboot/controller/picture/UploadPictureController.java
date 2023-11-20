@@ -26,9 +26,9 @@ public class UploadPictureController {
     @Autowired
     ImageService imageService;
 
-    private String[] ALLOW_UPLOAD_TYPE = new String[] { "JPG", "PNG", "JPEG", "WEBP"};
+    private String[] ALLOW_UPLOAD_TYPE = new String[] { "JPG", "PNG", "JPEG", "WEBP", "jpg", "png", "jpeg", "webp"};
 
-    @RequestMapping("/upload/image")
+    @RequestMapping(value = "/upload/image", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String doUpload(@RequestBody String body) {
         // 验证用户上传图片数据的合法性
@@ -47,9 +47,8 @@ public class UploadPictureController {
                 // 解析 Base64为文件
                 try {
                     byte[] decodedBytes = Base64.getDecoder().decode(base64);
-                    String basePath = "/projectdata/pic/";
                     String fileName = ImageRandomNameUtil.instance().generateUniqueCode() + "." + type.toLowerCase();
-                    File file = new File(basePath + fileName);
+                    File file = new File(Constants.PIC_LOCAL + fileName);
                     try (FileOutputStream fos = new FileOutputStream(file)) {
                         fos.write(decodedBytes); // 写入解码后的字节数组到文件
                         fos.flush(); // 刷新缓冲区
@@ -66,7 +65,7 @@ public class UploadPictureController {
                             currentTime
                     ));
                     return SuccessResponseUtil.instance()
-                            .dataResponse(new ImageResource(Constants.BASE_PIC_URL + fileName, currentTime));
+                            .dataResponse(new ImageResource(Constants.BASE_PIC_LOCAL_URL + fileName, currentTime));
                 } catch (Exception e) {
                     e.printStackTrace();
                     return ErrorResponseUtil.instance().initResponse(Constants.IMAGE_DATA_ERROR);

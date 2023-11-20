@@ -30,7 +30,7 @@ public class User {
 
     // 用户头像
     @Column(name = "head")
-    private String headUrl;
+    private long headId;
 
     // 用户简介
     @Column(name = "des")

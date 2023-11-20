@@ -66,7 +66,7 @@ public class AlbumsController {
                             if (album.getFacePicId() == -1) {
                                 List<Image> targetImages = imageService.getImagesByUid(album.getFacePicId());
                                 if (targetImages != null && targetImages.size() > 0) {
-                                    faceUrl = Constants.BASE_PIC_URL + targetImages.get(0).getName();
+                                    faceUrl = Constants.BASE_PIC_LOCAL_URL + targetImages.get(0).getName();
                                 }
                             }
                         }

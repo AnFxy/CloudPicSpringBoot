@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = Constants.IMAGE_TABLE)
+@Table(name = Constants.ALBUM_TABLE)
 public class Album {
     // 相册ID
     @Id

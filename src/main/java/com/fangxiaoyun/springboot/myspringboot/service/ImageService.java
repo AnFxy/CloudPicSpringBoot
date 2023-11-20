@@ -26,7 +26,7 @@ public class ImageService {
         return imageRepository.count();
     }
 
-    public Image addImage(Image image) {
-        return imageRepository.save(image);
+    public void addImage(Image image) {
+        imageRepository.save(image);
     }
 }

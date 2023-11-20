@@ -1,5 +1,6 @@
 package com.fangxiaoyun.springboot.myspringboot.controller.picture;
 
+import com.fangxiaoyun.springboot.myspringboot.common.Constants;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -16,7 +17,7 @@ public class WebConf extends WebMvcConfigurationSupport {
         registry.addResourceHandler("doc.html")
                 .addResourceLocations("classpath:/META-INF/resources/", "classpath:/META-INF/resources/webjars/");
         //通过image访问本地的图片
-        registry.addResourceHandler("/image/**").addResourceLocations("file:///projectdata/pic/");
+        registry.addResourceHandler("/image/**").addResourceLocations("file://" + Constants.PIC_LOCAL);
         registry.addResourceHandler("/apk/**").addResourceLocations("file:///projectdata/apk/");
     }
 
