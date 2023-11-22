@@ -2,13 +2,12 @@ package com.fangxiaoyun.springboot.myspringboot.controller.login;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
-import com.fangxiaoyun.springboot.myspringboot.entity.request.LoginMessage;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.LogoutMessage;
-import com.fangxiaoyun.springboot.myspringboot.entity.response.LoginToken;
 import com.fangxiaoyun.springboot.myspringboot.service.LoginService;
 import com.fangxiaoyun.springboot.myspringboot.table.Login;
-import com.fangxiaoyun.springboot.myspringboot.table.User;
-import com.fangxiaoyun.springboot.myspringboot.utils.*;
+import com.fangxiaoyun.springboot.myspringboot.utils.CheckRequestBodyUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.SuccessResponseUtil;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,8 @@ public class LogoutController {
     public String doLogin(@RequestBody String body) {
         // 核验用户上传参数数据是否正确
         BaseRequest<LogoutMessage> baseRequest =
-                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<LogoutMessage>() {}.getType());
+                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<LogoutMessage>() {
+                }.getType());
         if (baseRequest.isOk()) {
             // 参数核验正确，判断账号、token是否正确
             List<Login> loginList =

@@ -10,7 +10,6 @@ import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,7 +25,8 @@ public class RegisterController {
     public String doRegister(@RequestBody String body) {
         // 核验用户上传参数数据是否正确
         BaseRequest<RegisterMessage> baseRequest =
-                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<RegisterMessage>() {}.getType());
+                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<RegisterMessage>() {
+                }.getType());
         if (baseRequest.isOk()) {
             // 参数核验正确，判断是否已经注册过这个手机号
             List<User> userList = service.getUserByPhoneNumber(baseRequest.getData().getPhoneNumber());

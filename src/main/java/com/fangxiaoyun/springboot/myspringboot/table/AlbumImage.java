@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 public class AlbumImage {
     // ID
     @Id
-    @Column(name="uid")
+    @Column(name = "uid")
     private String uid;
 
     // 相册ID
-    @Column(name="album_id")
+    @Column(name = "album_id")
     private String albumId;
 
     // 图片ID
-    @Column(name="pic_id")
+    @Column(name = "pic_id")
     private long picId;
 }

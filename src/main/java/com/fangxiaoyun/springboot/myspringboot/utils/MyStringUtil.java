@@ -3,7 +3,8 @@ package com.fangxiaoyun.springboot.myspringboot.utils;
 public class MyStringUtil {
     private volatile static MyStringUtil myStringUtil;
 
-    private MyStringUtil() {}
+    private MyStringUtil() {
+    }
 
     public static MyStringUtil instance() {
         if (myStringUtil == null) {

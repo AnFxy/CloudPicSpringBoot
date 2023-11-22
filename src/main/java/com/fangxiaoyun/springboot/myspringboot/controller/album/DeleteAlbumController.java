@@ -1,7 +1,6 @@
 package com.fangxiaoyun.springboot.myspringboot.controller.album;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import com.fangxiaoyun.springboot.myspringboot.entity.BaseHead;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumDetailMessage;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumImageService;

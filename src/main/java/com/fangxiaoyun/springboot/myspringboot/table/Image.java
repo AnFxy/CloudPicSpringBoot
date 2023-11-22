@@ -1,7 +1,10 @@
 package com.fangxiaoyun.springboot.myspringboot.table;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +20,10 @@ public class Image {
     private long uid;
 
     // 图片名字
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
     // 创建时间
-    @Column(name="create_time")
+    @Column(name = "create_time")
     private long createTime;
 }

@@ -1,7 +1,6 @@
 package com.fangxiaoyun.springboot.myspringboot.controller.album;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import com.fangxiaoyun.springboot.myspringboot.entity.BaseHead;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumDetailMessage;
 import com.fangxiaoyun.springboot.myspringboot.entity.response.AlbumDetailResource;
@@ -14,7 +13,9 @@ import com.fangxiaoyun.springboot.myspringboot.table.Album;
 import com.fangxiaoyun.springboot.myspringboot.table.AlbumImage;
 import com.fangxiaoyun.springboot.myspringboot.table.Image;
 import com.fangxiaoyun.springboot.myspringboot.table.Login;
-import com.fangxiaoyun.springboot.myspringboot.utils.*;
+import com.fangxiaoyun.springboot.myspringboot.utils.CheckRequestBodyUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.SuccessResponseUtil;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +60,8 @@ public class AlbumDetailController {
                 } else {
                     // token有效的话 核验用户上传参数数据是否正确
                     BaseRequest<AlbumDetailMessage> baseRequest =
-                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<AlbumDetailMessage>() {}.getType());
+                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<AlbumDetailMessage>() {
+                            }.getType());
                     if (baseRequest.isOk()) {
                         // body数据合法 根据相册ID 获取到相册表中的数据
                         AlbumDetailMessage albumDetail = baseRequest.getData();

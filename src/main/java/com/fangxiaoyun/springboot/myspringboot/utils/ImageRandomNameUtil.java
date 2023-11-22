@@ -9,7 +9,8 @@ public class ImageRandomNameUtil {
 
     private volatile static ImageRandomNameUtil imageNameUtil;
 
-    private ImageRandomNameUtil() {}
+    private ImageRandomNameUtil() {
+    }
 
     public static ImageRandomNameUtil instance() {
         if (imageNameUtil == null) {

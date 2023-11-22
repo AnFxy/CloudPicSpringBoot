@@ -18,14 +18,14 @@ public class Login {
 
     // 用户手机号 唯一的
     @Id
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     // 用户token
-    @Column(name="token")
+    @Column(name = "token")
     private String token;
 
     // 创建时间 时间戳
-    @Column(name="create_time")
+    @Column(name = "create_time")
     private long createTime;
 }

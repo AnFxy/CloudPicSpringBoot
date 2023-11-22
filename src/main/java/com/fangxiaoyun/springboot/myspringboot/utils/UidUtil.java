@@ -3,7 +3,8 @@ package com.fangxiaoyun.springboot.myspringboot.utils;
 public class UidUtil {
     private volatile static UidUtil uidUtil;
 
-    private UidUtil() {}
+    private UidUtil() {
+    }
 
     public static UidUtil instance() {
         if (uidUtil == null) {

@@ -1,7 +1,6 @@
 package com.fangxiaoyun.springboot.myspringboot.controller.album;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import com.fangxiaoyun.springboot.myspringboot.entity.BaseHead;
 import com.fangxiaoyun.springboot.myspringboot.entity.response.AlbumResource;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumImageService;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
@@ -11,7 +10,8 @@ import com.fangxiaoyun.springboot.myspringboot.table.Album;
 import com.fangxiaoyun.springboot.myspringboot.table.AlbumImage;
 import com.fangxiaoyun.springboot.myspringboot.table.Image;
 import com.fangxiaoyun.springboot.myspringboot.table.Login;
-import com.fangxiaoyun.springboot.myspringboot.utils.*;
+import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
+import com.fangxiaoyun.springboot.myspringboot.utils.SuccessResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -72,7 +72,7 @@ public class AlbumsController {
                         }
                         albumResources.add(new AlbumResource(
                                 faceUrl, album.getTitle(), album.getLabelId(), count,
-                                album.getCreateTime(),album.getAlbumId())
+                                album.getCreateTime(), album.getAlbumId())
                         );
                     }
                     return SuccessResponseUtil.instance().dataResponse(albumResources);

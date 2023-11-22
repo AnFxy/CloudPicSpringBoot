@@ -1,7 +1,10 @@
 package com.fangxiaoyun.springboot.myspringboot.table;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,11 +20,11 @@ public class User {
     private long uid;
 
     // 用户名字
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
     // 用户手机号
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     // 用户密码

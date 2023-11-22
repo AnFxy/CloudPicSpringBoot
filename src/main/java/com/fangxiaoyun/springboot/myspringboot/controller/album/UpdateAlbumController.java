@@ -2,7 +2,6 @@ package com.fangxiaoyun.springboot.myspringboot.controller.album;
 
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import com.fangxiaoyun.springboot.myspringboot.entity.BaseHead;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.UpdateAlbumMessage;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
@@ -51,7 +50,8 @@ public class UpdateAlbumController {
                 } else {
                     // token有效的话 核验用户上传参数数据是否正确
                     BaseRequest<UpdateAlbumMessage> baseRequest =
-                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<UpdateAlbumMessage>() {}.getType());
+                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<UpdateAlbumMessage>() {
+                            }.getType());
                     if (baseRequest.isOk()) {
                         UpdateAlbumMessage updateAlbumMessage = baseRequest.getData();
                         // 参数校验通过后，根据图片链接获取到 封面图片名 =》查询到图片表ID，更新相册表

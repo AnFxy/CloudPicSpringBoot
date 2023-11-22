@@ -9,7 +9,8 @@ public class TokenRandomUtil {
 
     private volatile static TokenRandomUtil tokenRandomUtil;
 
-    private TokenRandomUtil() {}
+    private TokenRandomUtil() {
+    }
 
     public static TokenRandomUtil instance() {
         if (tokenRandomUtil == null) {

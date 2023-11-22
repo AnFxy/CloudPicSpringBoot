@@ -49,7 +49,8 @@ public class UpdateUserInfoController {
                 } else {
                     // token有效 判断参数数据是否正确
                     BaseRequest<UpdateUserInfoMessage> baseRequest =
-                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<UpdateUserInfoMessage>() {}.getType());
+                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<UpdateUserInfoMessage>() {
+                            }.getType());
                     if (baseRequest.isOk()) {
                         UpdateUserInfoMessage updateUserInfo = baseRequest.getData();
                         // 参数校验通过后，如果图片链接不为空，则需要查询一下图片的ID

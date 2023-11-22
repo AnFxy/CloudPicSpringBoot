@@ -14,9 +14,13 @@ import java.util.List;
 @Transactional
 public interface IAlbumRepository extends JpaRepository<Album, Long> {
     List<Album> findByAlbumId(String albumId);
+
     List<Album> findByAlbumIdAndPhoneNumber(String albumId, String phoneNumber);
+
     List<Album> findByPhoneNumber(String phoneNumber);
+
     void deleteByAlbumIdAndPhoneNumber(String albumId, String phoneNumber);
+
     long count();
 
     @Modifying(clearAutomatically = true)

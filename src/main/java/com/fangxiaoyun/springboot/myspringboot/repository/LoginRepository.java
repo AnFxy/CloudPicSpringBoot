@@ -14,14 +14,17 @@ import java.util.List;
 @Transactional
 public interface LoginRepository extends JpaRepository<Login, Long> {
     List<Login> findByPhoneNumber(String phoneNumber);
+
     List<Login> findByToken(String token);
+
     List<Login> findByPhoneNumberAndToken(String phoneNumber, String token);
+
     void deleteByPhoneNumber(String phoneNumber);
 
     @Modifying(clearAutomatically = true)
     @Query(nativeQuery = true,
             value = "update user_login set token = :token, create_time = :createTime where phone_number = :phoneNumber")
-    void updateToken(@Param("phoneNumber") String phoneNumber,@Param("token") String  token, @Param("createTime") long createTime);
+    void updateToken(@Param("phoneNumber") String phoneNumber, @Param("token") String token, @Param("createTime") long createTime);
 
     long count();
 

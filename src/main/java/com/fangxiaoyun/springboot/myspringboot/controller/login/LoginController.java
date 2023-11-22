@@ -31,7 +31,8 @@ public class LoginController {
     public String doLogin(@RequestBody String body) {
         // 核验用户上传参数数据是否正确
         BaseRequest<LoginMessage> baseRequest =
-                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<LoginMessage>() {}.getType());
+                CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<LoginMessage>() {
+                }.getType());
         if (baseRequest.isOk()) {
             // 参数核验正确，判断账号密码是否正确
             List<User> userList = userService.getUserByPhoneNumber(baseRequest.getData().getPhoneNumber());

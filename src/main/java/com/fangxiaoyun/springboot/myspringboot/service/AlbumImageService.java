@@ -15,6 +15,7 @@ public class AlbumImageService {
     public List<AlbumImage> getAlbumImageByUid(String uid) {
         return albumImageRepository.findByUid(uid);
     }
+
     public List<AlbumImage> getAlbumImageByAlbumId(String albumId) {
         return albumImageRepository.findByAlbumId(albumId);
     }

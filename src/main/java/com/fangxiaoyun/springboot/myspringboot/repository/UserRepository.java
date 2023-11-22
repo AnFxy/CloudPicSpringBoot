@@ -14,8 +14,11 @@ import java.util.List;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUid(Long uid);
+
     List<User> findByPhoneNumber(String phoneNumber);
+
     List<User> findByPhoneNumberAndPassword(String phoneNumber, String password);
+
     long count();
 
     @Modifying(clearAutomatically = true)

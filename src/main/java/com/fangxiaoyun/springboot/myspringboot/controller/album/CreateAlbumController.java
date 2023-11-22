@@ -1,7 +1,6 @@
 package com.fangxiaoyun.springboot.myspringboot.controller.album;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
-import com.fangxiaoyun.springboot.myspringboot.entity.BaseHead;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumMessage;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
@@ -51,7 +50,8 @@ public class CreateAlbumController {
                 } else {
                     // token有效的话 核验用户上传参数数据是否正确
                     BaseRequest<AlbumMessage> baseRequest =
-                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<AlbumMessage>() {}.getType());
+                            CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<AlbumMessage>() {
+                            }.getType());
                     if (baseRequest.isOk()) {
                         // body数据合法 判断封面图片链接是否不为空字符串，如果不为空，则截取路径后的图片名字，根据名字去图片表找到ID
                         AlbumMessage albumMessage = baseRequest.getData();

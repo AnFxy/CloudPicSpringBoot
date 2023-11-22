@@ -8,6 +8,7 @@ public class Constants {
     public static final String LOGIN_TABLE = "user_login";
     public static final String ALBUM_TABLE = "album_message";
     public static final String ALBUM_Image = "album_image";
+    public static final String VERSION_TABLE = "version_message";
 
     // 错误信息
     public static final String PARAM_ERROR = "参数传入异常";

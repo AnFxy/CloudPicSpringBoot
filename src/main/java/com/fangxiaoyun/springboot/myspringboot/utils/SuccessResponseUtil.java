@@ -7,7 +7,8 @@ import com.google.gson.Gson;
 public class SuccessResponseUtil {
     private volatile static SuccessResponseUtil successResponseUtil;
 
-    private SuccessResponseUtil() {}
+    private SuccessResponseUtil() {
+    }
 
     public static SuccessResponseUtil instance() {
         if (successResponseUtil == null) {

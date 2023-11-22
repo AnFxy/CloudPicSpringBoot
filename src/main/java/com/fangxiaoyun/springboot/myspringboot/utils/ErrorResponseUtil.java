@@ -7,7 +7,8 @@ import com.google.gson.Gson;
 public class ErrorResponseUtil {
     private volatile static ErrorResponseUtil errorResponseUtil;
 
-    private ErrorResponseUtil() {}
+    private ErrorResponseUtil() {
+    }
 
     public static ErrorResponseUtil instance() {
         if (errorResponseUtil == null) {

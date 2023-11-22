@@ -4,7 +4,8 @@ public class TimeUtil {
 
     private volatile static TimeUtil timeUtil;
 
-    private TimeUtil() {}
+    private TimeUtil() {
+    }
 
     public static TimeUtil instance() {
         if (timeUtil == null) {
