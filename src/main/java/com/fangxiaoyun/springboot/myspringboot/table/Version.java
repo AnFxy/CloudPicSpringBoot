@@ -26,7 +26,7 @@ public class Version {
 
     // 最低不强制更新版本号
     @Column(name = "mini_version_code")
-    private int miniVersionCode;
+    private long miniVersionCode;
 
     // 更新提示标题
     @Column(name = "title")
