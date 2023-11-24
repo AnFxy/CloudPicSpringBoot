@@ -19,8 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByPhoneNumberAndPassword(String phoneNumber, String password);
 
-    long count();
-
     @Modifying(clearAutomatically = true)
     @Query(nativeQuery = true,
             value = "update user_message set head = :headId, name = :nickName, gender = :gender, des = :des where phone_number = :phoneNumber")
@@ -31,6 +29,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
             @Param("gender") int gender,
             @Param("des") String des
     );
-
-    User save(User user);
 }

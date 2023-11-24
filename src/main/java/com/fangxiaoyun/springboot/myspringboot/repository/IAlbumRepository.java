@@ -21,12 +21,8 @@ public interface IAlbumRepository extends JpaRepository<Album, Long> {
 
     void deleteByAlbumIdAndPhoneNumber(String albumId, String phoneNumber);
 
-    long count();
-
     @Modifying(clearAutomatically = true)
     @Query(nativeQuery = true,
             value = "update album_message set title = :title, label_id = :labelId, face_pic_id = :facePicId where album_id = :albumId")
     void updateAlbum(@Param("title") String title, @Param("labelId") int labelId, @Param("facePicId") long facePicId, @Param("albumId") String albumId);
-
-    Album save(Album album);
 }

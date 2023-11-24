@@ -12,11 +12,7 @@ public interface AlbumImageRepository extends JpaRepository<AlbumImage, Long> {
 
     List<AlbumImage> findByAlbumId(String albumId);
 
-    long count();
-
     void deleteByAlbumId(String albumId);
 
     void deleteByAlbumIdAndPicId(String albumId, long picId);
-
-    AlbumImage save(AlbumImage albumImage);
 }

@@ -25,8 +25,4 @@ public interface LoginRepository extends JpaRepository<Login, Long> {
     @Query(nativeQuery = true,
             value = "update user_login set token = :token, create_time = :createTime where phone_number = :phoneNumber")
     void updateToken(@Param("phoneNumber") String phoneNumber, @Param("token") String token, @Param("createTime") long createTime);
-
-    long count();
-
-    Login save(Login login);
 }

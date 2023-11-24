@@ -9,6 +9,7 @@ public class Constants {
     public static final String ALBUM_TABLE = "album_message";
     public static final String ALBUM_Image = "album_image";
     public static final String VERSION_TABLE = "version_message";
+    public static final String BUG_TABLE = "bug_message";
 
     // 错误信息
     public static final String PARAM_ERROR = "参数传入异常";
