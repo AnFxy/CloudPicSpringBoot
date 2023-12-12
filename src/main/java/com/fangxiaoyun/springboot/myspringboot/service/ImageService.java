@@ -4,10 +4,12 @@ import com.fangxiaoyun.springboot.myspringboot.repository.ImageRepository;
 import com.fangxiaoyun.springboot.myspringboot.table.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
@@ -30,5 +32,9 @@ public class ImageService {
 
     public void addImage(Image image) {
         imageRepository.save(image);
+    }
+
+    public List<String> getHeadImageByPhoneNumber(String phoneNumber) {
+        return imageRepository.findHeadByPhoneNumber(phoneNumber);
     }
 }

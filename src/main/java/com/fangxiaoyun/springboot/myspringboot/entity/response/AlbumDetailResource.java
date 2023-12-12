@@ -12,9 +12,11 @@ import java.util.List;
 public class AlbumDetailResource {
     private String faceUrl;
     private int total;
+    private String albumId;
     private String title;
     private int labelId;
     private Long createTime;
     private String id;
     private List<ImageResource> picList;
+    private List<Subscriber> subscribers;
 }

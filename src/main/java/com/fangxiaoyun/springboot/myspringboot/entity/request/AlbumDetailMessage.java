@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AlbumDetailMessage {
     private String albumId; // 相册ID
+    private int type; // 0 仅退出相册 1退出并且删除相册
 }

@@ -6,6 +6,7 @@ import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumDetailMessage
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumImageService;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
 import com.fangxiaoyun.springboot.myspringboot.service.LoginService;
+import com.fangxiaoyun.springboot.myspringboot.service.UserAlbumService;
 import com.fangxiaoyun.springboot.myspringboot.table.Login;
 import com.fangxiaoyun.springboot.myspringboot.utils.CheckRequestBodyUtil;
 import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
@@ -35,6 +36,9 @@ public class DeleteAlbumController {
     @Autowired
     AlbumService albumService;
 
+    @Autowired
+    UserAlbumService userAlbumService;
+
     @RequestMapping(value = "/delete_album", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String createAlbum(@RequestBody String body, @RequestHeader HashMap<String, String> baseHead) {
@@ -53,11 +57,16 @@ public class DeleteAlbumController {
                             CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<AlbumDetailMessage>() {
                             }.getType());
                     if (baseRequest.isOk()) {
-                        // body数据合法 根据手机号和相册ID 删除相册，以及删除相册-图片表的关联
+                        // body数据合法 根据 删除类型
+                        // 1.仅退出相册 删除用户-相册表的关联
+                        // 2. 退出并删除相册 手机号和相册ID 删除相册，以及删除相册-图片表的关联 以及删除用户-相册表的关联
                         AlbumDetailMessage albumDetailMessage = baseRequest.getData();
                         try {
-                            albumService.deleteAlbumByAlbumIdAndPhoneNumber(albumDetailMessage.getAlbumId(), loginInfo.get(0).getPhoneNumber());
-                            albumImageService.deleteAlbum(albumDetailMessage.getAlbumId());
+                            if (albumDetailMessage.getType() == 1) {
+                                userAlbumService.deleteUserAlbumByAlbumId(albumDetailMessage.getAlbumId(), loginInfo.get(0).getPhoneNumber());
+                            } else {
+                                userAlbumService.deleteUserAlbumByAlbumIdAndPhoneNumber(albumDetailMessage.getAlbumId(), loginInfo.get(0).getPhoneNumber());
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                             return ErrorResponseUtil.instance().initResponse(Constants.OPERATE_FAILED);

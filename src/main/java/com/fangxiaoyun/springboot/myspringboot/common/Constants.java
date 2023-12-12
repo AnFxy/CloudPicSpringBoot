@@ -10,6 +10,7 @@ public class Constants {
     public static final String ALBUM_Image = "album_image";
     public static final String VERSION_TABLE = "version_message";
     public static final String BUG_TABLE = "bug_message";
+    public static final String USER_ALBUM = "user_album";
 
     // 错误信息
     public static final String PARAM_ERROR = "参数传入异常";
@@ -27,7 +28,7 @@ public class Constants {
 
     // 项目部署的图片域名
     public static final String BASE_PIC_URL = "http://124.71.83.237:8080/image/";
-    public static final String BASE_PIC_LOCAL_URL = "http://172.17.10.51:8080/image/";
+    public static final String BASE_PIC_LOCAL_URL = "http://172.17.10.56:8080/image/";
 
     // 项目图片放置路径
     public static final String PIC_LOCAL = "/Users/user/Desktop/pic/";

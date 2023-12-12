@@ -5,14 +5,9 @@ import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumDetailMessage;
 import com.fangxiaoyun.springboot.myspringboot.entity.response.AlbumDetailResource;
 import com.fangxiaoyun.springboot.myspringboot.entity.response.ImageResource;
-import com.fangxiaoyun.springboot.myspringboot.service.AlbumImageService;
-import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
-import com.fangxiaoyun.springboot.myspringboot.service.ImageService;
-import com.fangxiaoyun.springboot.myspringboot.service.LoginService;
-import com.fangxiaoyun.springboot.myspringboot.table.Album;
-import com.fangxiaoyun.springboot.myspringboot.table.AlbumImage;
-import com.fangxiaoyun.springboot.myspringboot.table.Image;
-import com.fangxiaoyun.springboot.myspringboot.table.Login;
+import com.fangxiaoyun.springboot.myspringboot.entity.response.Subscriber;
+import com.fangxiaoyun.springboot.myspringboot.service.*;
+import com.fangxiaoyun.springboot.myspringboot.table.*;
 import com.fangxiaoyun.springboot.myspringboot.utils.CheckRequestBodyUtil;
 import com.fangxiaoyun.springboot.myspringboot.utils.ErrorResponseUtil;
 import com.fangxiaoyun.springboot.myspringboot.utils.SuccessResponseUtil;
@@ -44,6 +39,12 @@ public class AlbumDetailController {
 
     @Autowired
     AlbumImageService albumImageService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserAlbumService userAlbumService;
 
     @RequestMapping(value = "/get_album_detail", produces = "application/json; charset=utf-8")
     @ResponseBody
@@ -79,14 +80,26 @@ public class AlbumDetailController {
                             if (albums.get(0).getFacePicId() == -1 && imageResourceList.size() > 0) {
                                 faceUrl = imageResourceList.get(0).getImageUrl();
                             }
+                            // 拿这个相册的持有者信息
+                            List<UserAlbum> userAlbums =
+                                    userAlbumService.getUserAlbumByAlbumId(albums.get(0).getAlbumId());
+                            List<Subscriber> subscribers = userAlbums.stream().map(item -> {
+                                List<String> headUrls = imageService.getHeadImageByPhoneNumber(item.getPhoneNumber());
+                                String headUrl = headUrls.size() > 0 ? headUrls.get(0) : "";
+                                String userName = userService.getUserByPhoneNumber(item.getPhoneNumber()).get(0).getName();
+                                int isOwner = item.getIsOwner();
+                                return new Subscriber(headUrl, userName, isOwner);
+                            }).toList();
                             return SuccessResponseUtil.instance().dataResponse(new AlbumDetailResource(
                                     faceUrl,
                                     imageResourceList.size(),
+                                    albums.get(0).getAlbumId(),
                                     albums.get(0).getTitle(),
                                     albums.get(0).getLabelId(),
                                     albums.get(0).getCreateTime(),
                                     albums.get(0).getAlbumId(),
-                                    imageResourceList
+                                    imageResourceList,
+                                    subscribers
                             ));
                         } else {
                             // 参数核验失败

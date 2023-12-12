@@ -6,9 +6,11 @@ import com.fangxiaoyun.springboot.myspringboot.entity.request.AlbumMessage;
 import com.fangxiaoyun.springboot.myspringboot.service.AlbumService;
 import com.fangxiaoyun.springboot.myspringboot.service.ImageService;
 import com.fangxiaoyun.springboot.myspringboot.service.LoginService;
+import com.fangxiaoyun.springboot.myspringboot.service.UserAlbumService;
 import com.fangxiaoyun.springboot.myspringboot.table.Album;
 import com.fangxiaoyun.springboot.myspringboot.table.Image;
 import com.fangxiaoyun.springboot.myspringboot.table.Login;
+import com.fangxiaoyun.springboot.myspringboot.table.UserAlbum;
 import com.fangxiaoyun.springboot.myspringboot.utils.*;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class CreateAlbumController {
 
     @Autowired
     AlbumService albumService;
+
+    @Autowired
+    UserAlbumService userAlbumService;
 
     @RequestMapping(value = "/create_album", produces = "application/json; charset=utf-8")
     @ResponseBody
@@ -65,12 +70,21 @@ public class CreateAlbumController {
                             }
                         }
                         // 将相册 插入相册表
+                        String albumId = ImageRandomNameUtil.instance().generateUniqueCode(12);
                         albumService.save(new Album(
-                                ImageRandomNameUtil.instance().generateUniqueCode(12),
+                                albumId,
                                 faceId,
                                 albumMessage.getTitle(),
                                 albumMessage.getLabelId(),
                                 loginInfo.get(0).getPhoneNumber(),
+                                System.currentTimeMillis()
+                        ));
+                        // 将用户-相册映射关系插入相册
+                        userAlbumService.attendAlbum(new UserAlbum(
+                                ImageRandomNameUtil.instance().generateUniqueCode(12),
+                                albumId,
+                                loginInfo.get(0).getPhoneNumber(),
+                                1,
                                 System.currentTimeMillis()
                         ));
                         return SuccessResponseUtil.instance().simpleResponse();
