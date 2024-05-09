@@ -6,6 +6,7 @@ public class Constants {
     public static final String USER_TABLE = "user_message";
     public static final String IMAGE_TABLE = "image_message";
     public static final String LOGIN_TABLE = "user_login";
+    public static final String QQ_LOGIN_TABLE= "qq_user_login";
     public static final String ALBUM_TABLE = "album_message";
     public static final String ALBUM_Image = "album_image";
     public static final String VERSION_TABLE = "version_message";

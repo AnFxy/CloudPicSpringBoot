@@ -1,9 +1,12 @@
 package com.fangxiaoyun.springboot.myspringboot.utils;
 
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
+import com.fangxiaoyun.springboot.myspringboot.service.LoginService;
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 
 public class CheckRequestBodyUtil {
     private volatile static CheckRequestBodyUtil checkRequestBodyUtil;

@@ -2,7 +2,6 @@ package com.fangxiaoyun.springboot.myspringboot.controller.other;
 
 import com.fangxiaoyun.springboot.myspringboot.common.Constants;
 import com.fangxiaoyun.springboot.myspringboot.entity.BaseRequest;
-import com.fangxiaoyun.springboot.myspringboot.entity.request.BugMessage;
 import com.fangxiaoyun.springboot.myspringboot.entity.request.Status;
 import com.fangxiaoyun.springboot.myspringboot.entity.response.BugDetailResource;
 import com.fangxiaoyun.springboot.myspringboot.service.BugService;
@@ -36,7 +35,7 @@ public class SearchBugController {
 
     @RequestMapping(value = "/select_bug", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String addBug(@RequestBody String body) {
+    public String selectBug(@RequestBody String body) {
         BaseRequest<Status> baseRequest =
                 CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<Status>() {
                 }.getType());
@@ -53,7 +52,7 @@ public class SearchBugController {
             try {
                 bugs.forEach(bug -> {
                     List<String> picUrls = new ArrayList<>();
-                    if (!bug.getIds().equals("")) {
+                    if (!bug.getIds().isEmpty()) {
                         picUrls =
                                 Arrays.stream(bug.getIds().split(","))
                                         .map(item ->

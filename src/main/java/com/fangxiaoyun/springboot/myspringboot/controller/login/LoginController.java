@@ -36,14 +36,14 @@ public class LoginController {
         if (baseRequest.isOk()) {
             // 参数核验正确，判断账号密码是否正确
             List<User> userList = userService.getUserByPhoneNumber(baseRequest.getData().getPhoneNumber());
-            if (userList != null && userList.size() > 0) {
+            if (userList != null && !userList.isEmpty()) {
                 // 已经注册过了, 判断密码是否正确
                 if (userList.get(0).getPassword().equals(baseRequest.getData().getPassword())) {
                     // 账号密码校验通过，生成token
                     final String token = TokenRandomUtil.instance().generateUniqueCode();
                     // 判断登录表是否有token，有的话需要更新token，以及时间
                     List<Login> login = loginService.getLoginByPhoneNumber(baseRequest.getData().getPhoneNumber());
-                    if (login != null && login.size() > 0) {
+                    if (login != null && !login.isEmpty()) {
                         loginService.updateToken(
                                 baseRequest.getData().getPhoneNumber(),
                                 token,

@@ -22,7 +22,7 @@ public class AddVersionController {
 
     @RequestMapping(value = "/add_version", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String checkVersionUpdate(@RequestBody String body) {
+    public String addVersion(@RequestBody String body) {
         // 判断参数数据是否正确
         BaseRequest<VersionMessage> baseRequest =
                 CheckRequestBodyUtil.instance().checkJsonStr(body, new TypeToken<VersionMessage>() {

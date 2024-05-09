@@ -19,7 +19,7 @@ public class AllVersionController {
 
     @RequestMapping(value = "/all_version", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String checkVersionUpdate() {
+    public String findAllVersion() {
         List<Version> versions = versionService.obtainAllVersions();
         if (versions != null) {
             return SuccessResponseUtil.instance().dataResponse(versions);

@@ -17,7 +17,9 @@ public class WebConf extends WebMvcConfigurationSupport {
         registry.addResourceHandler("doc.html")
                 .addResourceLocations("classpath:/META-INF/resources/", "classpath:/META-INF/resources/webjars/");
         //通过image访问本地的图片
-        registry.addResourceHandler("/image/**").addResourceLocations("file://" + Constants.PIC_LOCAL);
+        registry.addResourceHandler("/image/**").addResourceLocations("file://" + Constants.PIC_REMOTE);
+        registry.addResourceHandler("/html/**").addResourceLocations("file:///projectdata/html/");
+        registry.addResourceHandler("/common/**").addResourceLocations("file:///projectdata/common/");
         registry.addResourceHandler("/apk/**").addResourceLocations("file:///projectdata/apk/");
     }
 

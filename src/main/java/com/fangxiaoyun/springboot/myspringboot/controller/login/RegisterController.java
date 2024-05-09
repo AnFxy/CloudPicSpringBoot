@@ -30,7 +30,7 @@ public class RegisterController {
         if (baseRequest.isOk()) {
             // 参数核验正确，判断是否已经注册过这个手机号
             List<User> userList = service.getUserByPhoneNumber(baseRequest.getData().getPhoneNumber());
-            if (userList != null && userList.size() > 0) {
+            if (userList != null && !userList.isEmpty()) {
                 // 已经注册过了
                 return ErrorResponseUtil.instance().initResponse(Constants.PHONE_NUMBER_USED);
             } else {
