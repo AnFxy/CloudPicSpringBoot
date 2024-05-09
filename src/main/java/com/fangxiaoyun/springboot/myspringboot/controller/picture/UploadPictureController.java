@@ -49,7 +49,7 @@ public class UploadPictureController {
                 try {
                     byte[] decodedBytes = Base64.getDecoder().decode(base64);
                     String fileName = ImageRandomNameUtil.instance().generateUniqueCode() + "." + type.toLowerCase();
-                    File file = new File(Constants.PIC_LOCAL + fileName);
+                    File file = new File(Constants.PIC_REMOTE + fileName);
                     try (FileOutputStream fos = new FileOutputStream(file)) {
                         fos.write(decodedBytes); // 写入解码后的字节数组到文件
                         fos.flush(); // 刷新缓冲区
@@ -66,7 +66,7 @@ public class UploadPictureController {
                             currentTime
                     ));
                     return SuccessResponseUtil.instance()
-                            .dataResponse(new ImageResource(Constants.BASE_PIC_LOCAL_URL + fileName, currentTime));
+                            .dataResponse(new ImageResource(Constants.BASE_PIC_URL + fileName, currentTime));
                 } catch (Exception e) {
                     e.printStackTrace();
                     return ErrorResponseUtil.instance().initResponse(Constants.IMAGE_DATA_ERROR);

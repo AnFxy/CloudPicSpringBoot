@@ -56,7 +56,7 @@ public class SearchBugController {
                         picUrls =
                                 Arrays.stream(bug.getIds().split(","))
                                         .map(item ->
-                                                Constants.BASE_PIC_LOCAL_URL +
+                                                Constants.BASE_PIC_URL +
                                                         imageService.getImagesByUid(Long.valueOf(item)).get(0).getName()
                                         ).toList();
                     }

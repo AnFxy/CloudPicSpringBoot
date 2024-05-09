@@ -28,7 +28,7 @@ public class Constants {
     public static final long TOKEN_VALID_TIME = 1209600000;
 
     // 项目部署的图片域名
-    public static final String BASE_PIC_URL = "http://124.71.83.237:8080/image/";
+    public static final String BASE_PIC_URL = "http://139.159.155.65:8080/image/";
     public static final String BASE_PIC_LOCAL_URL = "http://172.17.10.56:8080/image/";
 
     // 项目图片放置路径

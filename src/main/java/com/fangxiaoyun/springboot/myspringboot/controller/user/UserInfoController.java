@@ -48,7 +48,7 @@ public class UserInfoController extends BaseTokenController {
                 if (targetUser.getHeadId() != -1) {
                     List<Image> images = imageService.getImagesByUid(targetUser.getHeadId());
                     if (images != null && !images.isEmpty()) {
-                        headUrl = Constants.BASE_PIC_LOCAL_URL + images.get(0).getName();
+                        headUrl = Constants.BASE_PIC_URL + images.get(0).getName();
                     }
                 }
                 return SuccessResponseUtil.instance().dataResponse(

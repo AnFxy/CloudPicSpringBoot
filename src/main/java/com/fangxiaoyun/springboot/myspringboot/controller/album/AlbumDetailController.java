@@ -71,7 +71,7 @@ public class AlbumDetailController extends BaseTokenController {
                                     .stream().map(AlbumImage::getPicId).toList()
                     );
                     images.forEach(item -> {
-                        imageResourceList.add(new ImageResource(Constants.BASE_PIC_LOCAL_URL + item.getName(), item.getCreateTime()));
+                        imageResourceList.add(new ImageResource(Constants.BASE_PIC_URL + item.getName(), item.getCreateTime()));
                     });
                     if (albums.get(0).getFacePicId() == -1 && !imageResourceList.isEmpty()) {
                         faceUrl = imageResourceList.get(0).getImageUrl();
